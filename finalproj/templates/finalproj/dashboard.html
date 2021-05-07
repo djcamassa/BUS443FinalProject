@@ -1,0 +1,55 @@
+{% extends "finalproj/Navbar.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Dashboard</h1>
+        <br>
+        <p>Welcome to the Final Project Dashboard! Below are some statistics of the University and you can navigate the webpage using the Navigation Bar at the top of the page. 
+            Student Details gives a list of all students enrolled and some information about each student. Use the Enrollment page to see what classes a student is enrolled in and also use the webpage to enroll
+            in classes. The Course Details page is a list of all courses offered and information about each course.</p>
+    </div>
+</div>
+
+<div class="container">
+    <b>Number of enrolled students:</b>
+    <p>{{count}}</p>
+</div>
+<br>
+<div class="container">
+    <b>Number of students in each year:</b>
+    <br>
+    <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Freshman</th>
+                    <th>Sophmore</th>
+                    <th>Junior</th>
+                    <th>Senior</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{fresh}}</td>
+                    <td>{{soph}}</td>
+                    <td>{{juni}}</td>
+                    <td>{{seni}}</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+<br>
+<div class="container">
+    <b>Average GPA:</b>
+    <p>{{data}}</p>
+</div>
+<br>
+<div class="container">
+    <b>Number of courses offered:</b>
+    <p>{{course}}</p>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "finalproj/Navbar.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Enrollment</h1><br/>
+        <p>Please select your Student ID number as well as the course you would like to enroll in, then click the enroll button once you are ready.</p>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 40px">
+
+    <div class="container" style="text-align: center">
+        <div class="row">
+            <div class="col-md-6">
+                <select id="studentid">
+                    <option selected="">Select Student ID</option>
+                    {% for name in student %}
+                    <option value="{{ name.studentid }}">{{ name.studentid }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-6">
+                <select id="coursename">
+                    <option selected="">Select Course</option>
+                    {% for name in course %}
+                    <option value="{{ name.coursetitle }}">{{ name.coursetitle }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+        </div>
+        <br/><br/>
+        <button class="btn btn-sm btn-dark" id="enroll">Enroll</button>
+    </div><br/>
+
+    <div class="container" style="text-align: center">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Course Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in enroll %}
+                <tr>
+                    <td>{{ row.studentname }}</td>
+                    <td>{{ row.coursename }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script>
+
+    $(document).ready(function(){
+
+        $('#enroll').click(function(){
+
+            $.ajax({
+                
+                url: "{% url 'saveenroll' %}",
+                data: {
+                    sid: $('#studentid').val(),
+                    cname: $('#coursename').val()
+                },
+                success: function(){
+                    window.location = "{% url 'enrollment' %}"
+                }
+
+            });
+
+        });
+
+    });
+
+</script>
+
+{% endblock %}

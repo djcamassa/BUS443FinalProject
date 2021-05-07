@@ -1,0 +1,21 @@
+{% extends "finalproj/Navbar.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Login</h1>
+    </div>
+</div>
+
+<div class="container">
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <table class="table">
+            {{ form }}
+        </table>
+        <input type="submit" value="Login"/>
+    </form>
+</div>
+
+{% endblock %}
